@@ -26,13 +26,13 @@ const gameSchema = new mongoose.Schema({
   users: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: userModel // Содержит ссылки на связанные с игрой модели пользователей
+      ref: userModel 
     }
   ],
   categories: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: categoryModel // Содержит ссылки на связанные с игрой модели категорий
+      ref: categoryModel 
     }
   ]
 });
