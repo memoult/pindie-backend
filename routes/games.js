@@ -4,7 +4,7 @@ const { checkAuth } = require('../middlewares/auth');
 
 const gamesRouter = require('express').Router();
 
-gamesRouter.post("/games", findAllGames, checkIsGameExists, checkIfCategoriesAvaliable, checkEmptyFields, checkAuth,createGame, sendGameCreated);
+gamesRouter.post("/games", findAllGames, checkIsGameExists, checkIfCategoriesAvaliable, checkEmptyFields, checkAuth, createGame, sendGameCreated);
 
 gamesRouter.get('/games', findAllGames, sendAllGames);
 gamesRouter.get("/games/:id", findGameById, sendGameById);
