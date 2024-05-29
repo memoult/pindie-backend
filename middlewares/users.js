@@ -63,7 +63,6 @@ const createUser = async (req, res, next) => {
       next();
     }
   };
-
   const checkIsUserExists = async (req, res, next) => {
     const isInArray = req.usersArray.find((user) => {
       return req.body.email === user.email;
@@ -86,6 +85,8 @@ const createUser = async (req, res, next) => {
       res.status(400).send({ message: "Ошибка хеширования пароля" });
     }
   }; 
+
+
 
 module.exports = {
     findAllUsers,
