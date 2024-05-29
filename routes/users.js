@@ -8,18 +8,18 @@ usersRouter.get("/users", findAllUsers, sendAllUsers);
 
 usersRouter.post(
     "/users",
-    findAllUsers, 
-    checkIsUserExists, 
-    checkEmptyNameAndEmailAndPassword, 
-    checkAuth, 
-    hashPassword, 
-    createUser, 
+    findAllUsers,
+    checkIsUserExists,
+    checkEmptyNameAndEmailAndPassword,
+    checkAuth,
+    hashPassword,
+    createUser,
     sendUserCreated
   );
 
   usersRouter.get("/users/:id", findUserById, sendUserById);
   usersRouter.put("/users/:id", checkEmptyNameAndEmail, checkAuth, updateUser, sendUserUpdated); 
-  usersRouter.delete("/users/:id", checkEmptyNameAndEmail, checkAuth, deleteUser, sendUserDeleted);
+  usersRouter.delete("/users/:id", checkAuth, deleteUser, sendUserDeleted);
   usersRouter.get("/me", checkAuth, sendMe); 
 
 
