@@ -2,4 +2,4 @@
 
 Ссылка на домен фронтенда: https://xodorkovskyfrontend.nomorepartiesco.ru/
 
-IP-адрес: 158.160.160.38
+IP-адрес: 158.160.160.38 .
