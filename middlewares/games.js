@@ -69,37 +69,25 @@ const checkEmptyFields = async (req, res, next) => {
     return;
   } else {
     res.setHeader("Content-Type", "application/json");
-        res.status(400).send(JSON.stringify({ message: "Заполни все поля" }));
-  } {
-   next();
+        res.status(400).send(JSON.stringify({ message: "Заполните все поля" }));
+  }  {
+    next();
   }
 };
 
+
 const checkIfCategoriesAvaliable = async (req, res, next) => {
   if(req.isVoteRequest) {
-    next();
-    return;
+      next();
+      return;
+  }
+  if (!req.body.categories || req.body.categories.length === 0) {
+      res.headers = {"Content-Type": "application/json"};
+      res.status(400).send({message: "Выберите хотя бы одну категорию"});
   } else {
-  res.setHeader("Content-Type", "application/json");
-      res.status(400).send(JSON.stringify({ message: "Выбери хотя бы одну категорию" }));
-}  {
-  next();
-}
-}; 
-
-const checkIfUsersAreSafe = async (req, res, next) => {
-if (!req.body.users) {
-  next();
-  return;
-}
-if (req.body.users.length - 1 === req.game.users.length) {
-  next();
-  return;
-} else {
-  res.setHeader("Content-Type", "application/json");
-      res.status(400).send(JSON.stringify({ message: "Нельзя удалять пользователей или добавлять больше одного пользователя" }));
-}
-}; 
+      next();
+  }
+};
 
 const checkIsGameExists = async (req, res, next) => {
   const isInArray = req.gamesArray.find((game) => {
@@ -119,6 +107,21 @@ if (Object.keys(req.body).length === 1 && req.body.users) {
 }
 next();
 };
+
+const checkIfUsersAreSafe = async (req, res, next) => {
+  if (!req.body.users) {
+    next();
+    return;
+  }
+  if (req.body.users.length - 1 === req.game.users.length) {
+    next();
+    return;
+  } else {
+    res.setHeader("Content-Type", "application/json");
+        res.status(400).send(JSON.stringify({ message: "Нельзя удалять пользователей или добавлять больше одного пользователя" }));
+  }
+};
+
 
 module.exports = {
   findAllGames,

@@ -60,7 +60,7 @@ const createCategory = async (req, res, next) => {
     } else {
       next();
     }
-  }; 
+  };
 
   const checkEmptyName = async (req, res, next) => {
     if (!req.body.name) {
